@@ -10,11 +10,13 @@
         <button ng-click="addTo()">Add this item to the button</button>
         <table>
         <tr class="card" ng-repeat="item in list track by $index">
-            <td ng-show =item.boolTask>{{item.task}}</td>
+            <td ng-show ="true">{{item.task}}</td>
+<!--
             <td><input ng-show=item.boolEdit ng-model="item.task"></td>
-            <td><button ng-click="edit($index)">Edit</button></td>
+-->
+          <!--  <td><button ng-click="edit($index)">Edit</button></td>
             <td><button ng-show=item.boolEdit ng-click="done($index)">Done</button></td>
-            <td><button ng-click="delete($index)">Delete</button></td>
+            <td><button ng-click="delete($index)">Delete</button></td>-->
         </tr>
         </table>
     </div>

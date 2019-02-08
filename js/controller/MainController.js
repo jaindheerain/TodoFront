@@ -6,7 +6,8 @@ app.controller('MainController',function ($scope,TodoService) {
     var init = function () {
         TodoService.getTasks()
             .then(function successCallback(response){
-                $scope.list=response
+                console.log(response)
+                $scope.list=response.data
                 console.log("Success");
             }, function errorCallback(response){
                 console.log("Error");
@@ -17,7 +18,14 @@ app.controller('MainController',function ($scope,TodoService) {
 
     $scope.addTo=function () {
         $scope.list.push({task: $scope.addToDo,boolTask:true,boolEdit:false})
-    }
+        TodoService.addNewTask({task: $scope.addToDo}).then(function successCallback(response){
+            console.log("Success");
+            init()
+        }, function errorCallback(response){
+            console.log("Error");
+        });
+        }
+
 
     $scope.edit=function (index) {
         console.log("this")
