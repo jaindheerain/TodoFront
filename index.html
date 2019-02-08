@@ -1,0 +1,25 @@
+<head>
+    <script src="jquery-3.3.1.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=yes" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+    <body ng-app="TodoList">
+    <div ng-controller="MainController">
+        <input ng-model="addToDo">
+        <button ng-click="addTo()">Add this item to the button</button>
+        <table>
+        <tr class="card" ng-repeat="item in list track by $index">
+            <td ng-show =item.boolTask>{{item.task}}</td>
+            <td><input ng-show=item.boolEdit ng-model="item.task"></td>
+            <td><button ng-click="edit($index)">Edit</button></td>
+            <td><button ng-show=item.boolEdit ng-click="done($index)">Done</button></td>
+            <td><button ng-click="delete($index)">Delete</button></td>
+        </tr>
+        </table>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/factories/TodoFactory.js"></script>
+    <script src="js/controller/MainController.js"></script>
+    </body>
