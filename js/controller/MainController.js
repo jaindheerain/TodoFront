@@ -39,10 +39,16 @@ app.controller('MainController',function ($scope,TodoService) {
     }
 
     $scope.done=function (index) {
+        TodoService.editTask($scope.list[index]).then(function successCallback(response){
+            console.log("Success");
+            init()
+        }, function errorCallback(response){
+            console.log("Error");
+        });
         console.log($scope.list[index].task)
         $scope.list[index].task=$scope.list[index].task
-        $scope.list[index].boolEdit=false;
-        $scope.list[index].boolTask=true;
+       /* $scope.list[index].boolEdit=false;
+        $scope.list[index].boolTask=true;*/
     }
     $scope.stuff=function () {
         $scope.editStuff=$scope.editStuff=$scope.addToDoEdit
