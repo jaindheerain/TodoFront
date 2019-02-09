@@ -35,7 +35,13 @@ app.controller('MainController',function ($scope,TodoService) {
     }
 
     $scope.delete=function (index) {
-        $scope.list.splice(index, 1);
+        TodoService.deleteTasks($scope.list[index]).then(function successCallback(response){
+            console.log("Success");
+            init()
+        }, function errorCallback(response){
+            console.log("Error");
+        });
+        console.log($scope.list[index].task)
     }
 
     $scope.done=function (index) {
@@ -46,7 +52,7 @@ app.controller('MainController',function ($scope,TodoService) {
             console.log("Error");
         });
         console.log($scope.list[index].task)
-        $scope.list[index].task=$scope.list[index].task
+        /*$scope.list[index].task=$scope.list[index].task*/
        /* $scope.list[index].boolEdit=false;
         $scope.list[index].boolTask=true;*/
     }

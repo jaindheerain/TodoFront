@@ -20,7 +20,10 @@ app.factory('TodoService', function($http) {
     };
 
     service.deleteTasks = function(id){
-        return $http.get(urlBase + '/user/' + id);
+        let body = new URLSearchParams();
+        body.set('task', id.task);
+        return $http.post(urlBase + '/todos/delete/'+id.id,body.toString() , {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}});
     };
 
 
